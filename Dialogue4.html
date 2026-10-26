@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商务汉语对话练习平台 - 对话4：文件与客户要求</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkcustom: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        },
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .pulse-recording {
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- Header Navigation Bar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-pinkcustom-500 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        商
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-slate-900 leading-tight">商务汉语对话练习平台</h1>
+                        <p class="text-xs text-slate-500">Business Chinese Learning Platform</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex space-x-1 sm:space-x-2">
+                    <button onclick="switchTab(1)" id="tab-btn-1" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-brand-600 bg-brand-50">
+                        <i class="fa-solid fa-compass"></i>
+                        <span>1. 场景体验</span>
+                    </button>
+                    <button onclick="switchTab(2)" id="tab-btn-2" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-clipboard-question"></i>
+                        <span>2. 听力理解</span>
+                    </button>
+                    <button onclick="switchTab(3)" id="tab-btn-3" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-comments"></i>
+                        <span>3. 对话与生词</span>
+                    </button>
+                    <button onclick="switchTab(4)" id="tab-btn-4" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                        <span>4. 语音练习</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Mobile Step Bar -->
+        <div class="md:hidden flex border-t border-slate-100 bg-slate-50 divide-x divide-slate-200 text-xs text-center font-medium">
+            <button onclick="switchTab(1)" id="mob-tab-1" class="flex-1 py-2 text-brand-600 bg-white font-semibold border-b-2 border-brand-600">1.场景</button>
+            <button onclick="switchTab(2)" id="mob-tab-2" class="flex-1 py-2 text-slate-600">2.听力</button>
+            <button onclick="switchTab(3)" id="mob-tab-3" class="flex-1 py-2 text-slate-600">3.对话</button>
+            <button onclick="switchTab(4)" id="mob-tab-4" class="flex-1 py-2 text-slate-600">4.发音</button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- PAGE 1: 场景体验 -->
+        <section id="page-1" class="page-content block space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <div class="md:flex items-stretch">
+                    <!-- Scene Illustration Left Side -->
+                    <div class="md:w-1/2 relative bg-slate-100 min-h-[280px] sm:min-h-[350px] flex items-center justify-center">
+                        <img src="https://i.ibb.co.com/hx11ptdH/image.png" onerror="this.src='https://placehold.co/600x400/e2e8f0/475569?text=Business+Office+Scene'" alt="商务办公场景" class="w-full h-full object-cover">
+                        <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full flex items-center space-x-1.5">
+                            <i class="fa-solid fa-location-dot text-pinkcustom-400"></i>
+                            <span>场景：公司办公室 / 工作任务确认</span>
+                        </div>
+                    </div>
+
+                    <!-- Intro Right Side -->
+                    <div class="md:w-1/2 p-6 md:p-8 flex flex-col justify-between">
+                        <div>
+                            <div class="inline-flex items-center space-x-2 bg-brand-50 text-brand-700 px-3 py-1 rounded-full text-xs font-semibold mb-3">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <span>课程单元：对话 4 - 文件与客户要求</span>
+                            </div>
+                            <h2 class="text-2xl font-bold text-slate-900 mb-3">商务对话导读与整体听力</h2>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                                本对话展示了主管与助理关于客户文件准备工作的时间安排与沟通协作。请点击下方播放器完整播放录音，熟悉语音语调与商务用语。
+                            </p>
+
+                            <!-- Characters Intro Cards -->
+                            <div class="grid grid-cols-2 gap-3 mb-6">
+                                <div class="flex items-center space-x-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <img src="https://i.ibb.co.com/Kcr6DznJ/image.png" onerror="this.src='https://placehold.co/100x100/3b82f6/ffffff?text=Supervisor'" class="w-12 h-12 rounded-full border-2 border-brand-500 object-cover" alt="主管">
+                                    <div>
+                                        <h4 class="font-bold text-sm text-slate-900">主管</h4>
+                                        <p class="text-xs text-slate-500">Supervisor</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                    <img src="https://i.ibb.co.com/V0YzBSjq/image.png" onerror="this.src='https://placehold.co/100x100/ec4899/ffffff?text=Assistant'" class="w-12 h-12 rounded-full border-2 border-pinkcustom-500 object-cover" alt="助理">
+                                    <div>
+                                        <h4 class="font-bold text-sm text-slate-900">助理</h4>
+                                        <p class="text-xs text-slate-500">Assistant</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Audio Player Card -->
+                        <div class="bg-gradient-to-r from-slate-900 to-slate-800 p-4 rounded-xl text-white shadow-md">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-xs font-semibold text-slate-300 flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-headphones text-brand-500"></i>
+                                    <span>完整对话录音 (Full Audio)</span>
+                                </span>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-[10px] text-slate-400">倍速:</span>
+                                    <select onchange="changeSpeed(this.value)" class="bg-slate-700 text-white text-xs rounded px-1.5 py-0.5 border border-slate-600 focus:outline-none">
+                                        <option value="0.8">0.8x</option>
+                                        <option value="1.0" selected>1.0x</option>
+                                        <option value="1.25">1.25x</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <audio id="full-audio" class="w-full h-10 rounded" controls>
+                                <source src="https://files.catbox.moe/5xb6ct.wav" type="audio/wav">
+                                <source src="https://files.catbox.moe/5xb6ct.wav" type="audio/mpeg">
+                                您的浏览器不支持音频播放。
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Button Footer -->
+            <div class="flex justify-end">
+                <button onclick="switchTab(2)" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-3 rounded-xl shadow-lg shadow-brand-500/20 flex items-center space-x-2 transition-all duration-200 transform hover:-translate-y-0.5">
+                    <span>开始听力理解测试</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 2: 听力理解 -->
+        <section id="page-2" class="page-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-100 pb-4 mb-6 gap-2">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                            <i class="fa-solid fa-circle-question text-brand-600"></i>
+                            <span>听力理解测试 (Listening Comprehension Quiz)</span>
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1">请根据刚才听到的对话内容回答下列 3 个问题。</p>
+                    </div>
+                    <!-- Quick Replay Audio Button -->
+                    <button onclick="playFullAudio()" class="px-3 py-1.5 text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg flex items-center space-x-1.5 transition">
+                        <i class="fa-solid fa-volume-high text-brand-600"></i>
+                        <span>重听完整录音</span>
+                    </button>
+                </div>
+
+                <!-- Questions List -->
+                <div class="space-y-8">
+                    <!-- Question 1 -->
+                    <div class="quiz-item border border-slate-100 bg-slate-50/50 p-5 rounded-xl">
+                        <h3 class="font-bold text-slate-800 text-base mb-3 flex items-start space-x-2">
+                            <span class="bg-brand-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">1</span>
+                            <span>这份文件最迟需要在什么时候发给客户？</span>
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-8">
+                            <button onclick="checkAnswer(1, 'A', false, this)" class="q1-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">A. 星期三</button>
+                            <button onclick="checkAnswer(1, 'B', true, this)" class="q1-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">B. 下周一前</button>
+                            <button onclick="checkAnswer(1, 'C', false, this)" class="q1-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">C. 星期五</button>
+                            <button onclick="checkAnswer(1, 'D', false, this)" class="q1-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">D. 今天下午</button>
+                        </div>
+                        <div id="q1-feedback" class="mt-3 pl-8 hidden"></div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="quiz-item border border-slate-100 bg-slate-50/50 p-5 rounded-xl">
+                        <h3 class="font-bold text-slate-800 text-base mb-3 flex items-start space-x-2">
+                            <span class="bg-brand-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">2</span>
+                            <span>助理希望主管在星期几提醒他/她一下？</span>
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-8">
+                            <button onclick="checkAnswer(2, 'A', false, this)" class="q2-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">A. 星期一</button>
+                            <button onclick="checkAnswer(2, 'B', false, this)" class="q2-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">B. 星期二</button>
+                            <button onclick="checkAnswer(2, 'C', true, this)" class="q2-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">C. 星期三</button>
+                            <button onclick="checkAnswer(2, 'D', false, this)" class="q2-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">D. 星期四</button>
+                        </div>
+                        <div id="q2-feedback" class="mt-3 pl-8 hidden"></div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="quiz-item border border-slate-100 bg-slate-50/50 p-5 rounded-xl">
+                        <h3 class="font-bold text-slate-800 text-base mb-3 flex items-start space-x-2">
+                            <span class="bg-brand-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">3</span>
+                            <span>关于客户的要求，助理的态度是什么？</span>
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-8">
+                            <button onclick="checkAnswer(3, 'A', false, this)" class="q3-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">A. 觉得太难，无法完成</button>
+                            <button onclick="checkAnswer(3, 'B', true, this)" class="q3-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">B. 让主管别担心，客户怎么要求就怎么做</button>
+                            <button onclick="checkAnswer(3, 'C', false, this)" class="q3-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">C. 还没有准备好</button>
+                            <button onclick="checkAnswer(3, 'D', false, this)" class="q3-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">D. 建议拒绝客户的要求</button>
+                        </div>
+                        <div id="q3-feedback" class="mt-3 pl-8 hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Navigation Buttons -->
+            <div class="flex justify-between items-center">
+                <button onclick="switchTab(1)" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 font-medium text-sm flex items-center space-x-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>返回场景体验</span>
+                </button>
+                <button onclick="switchTab(3)" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-2.5 rounded-xl shadow-lg shadow-brand-500/20 flex items-center space-x-2 text-sm">
+                    <span>学习对话与生词</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 3: 对话与生词 -->
+        <section id="page-3" class="page-content hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Left Column: Line-by-Line Dialogue (7 cols) -->
+                <div class="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center pb-4 mb-4 border-b border-slate-100">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg flex items-center space-x-2">
+                                    <i class="fa-solid fa-comments text-brand-600"></i>
+                                    <span>对话文本与分句朗读</span>
+                                </h3>
+                                <p class="text-xs text-slate-500">点按声音图标可单独播放该句音频</p>
+                            </div>
+                            
+                            <!-- Toggle View Controls -->
+                            <div class="flex space-x-2">
+                                <button onclick="togglePinyin()" id="pinyin-toggle-btn" class="px-2.5 py-1 text-xs bg-slate-100 text-slate-700 rounded-md hover:bg-slate-200 font-medium border border-slate-200 transition">
+                                    拼音: 显
+                                </button>
+                                <button onclick="toggleTrans()" id="trans-toggle-btn" class="px-2.5 py-1 text-xs bg-slate-100 text-slate-700 rounded-md hover:bg-slate-200 font-medium border border-slate-200 transition">
+                                    英文: 显
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Chat List Container -->
+                        <div class="space-y-4">
+                            <!-- Line 1: Supervisor -->
+                            <div class="flex items-start space-x-3 group">
+                                <img src="https://i.ibb.co.com/Kcr6DznJ/image.png" class="w-10 h-10 rounded-full border border-brand-500 flex-shrink-0 object-cover mt-1" alt="主管">
+                                <div class="flex-grow">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="text-xs font-bold text-brand-700">主管</span>
+                                        <button onclick="playSingleAudio('https://files.catbox.moe/ga63r2.mp3')" class="w-7 h-7 rounded-full bg-brand-50 hover:bg-brand-100 text-brand-600 flex items-center justify-center transition" title="播放此句">
+                                            <i class="fa-solid fa-volume-high text-xs"></i>
+                                        </button>
+                                    </div>
+                                    <div class="bg-brand-50/70 border border-brand-100 p-3.5 rounded-2xl rounded-tl-none">
+                                        <p class="pinyin-text text-xs text-brand-800 font-mono mb-0.5">Wǒmen děi bǎ zhè fèn wénjiàn xiě hǎo.</p>
+                                        <p class="text-slate-900 text-base font-medium">我们<span class="text-pinkcustom-600 font-bold border-b border-pinkcustom-400">得</span>把这份文件写好。</p>
+                                        <p class="trans-text text-xs text-slate-500 mt-1 italic">We have to write this file.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Line 2: Assistant -->
+                            <div class="flex items-start space-x-3 group flex-row-reverse space-x-reverse">
+                                <img src="https://i.ibb.co.com/V0YzBSjq/image.png" class="w-10 h-10 rounded-full border border-pinkcustom-500 flex-shrink-0 object-cover mt-1" alt="助理">
+                                <div class="flex-grow text-right">
+                                    <div class="flex items-center space-x-2 mb-1 justify-end">
+                                        <button onclick="playSingleAudio('https://files.catbox.moe/z2o668.wav')" class="w-7 h-7 rounded-full bg-pinkcustom-50 hover:bg-pinkcustom-100 text-pinkcustom-600 flex items-center justify-center transition" title="播放此句">
+                                            <i class="fa-solid fa-volume-high text-xs"></i>
+                                        </button>
+                                        <span class="text-xs font-bold text-pinkcustom-600">助理</span>
+                                    </div>
+                                    <div class="bg-pinkcustom-50/70 border border-pinkcustom-100 p-3.5 rounded-2xl rounded-tr-none text-left">
+                                        <p class="pinyin-text text-xs text-pinkcustom-800 font-mono mb-0.5">Shénme shíhou gěi kèhù?</p>
+                                        <p class="text-slate-900 text-base font-medium">什么时候给客户？</p>
+                                        <p class="trans-text text-xs text-slate-500 mt-1 italic">When should we give the file to the client?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Line 3: Supervisor -->
+                            <div class="flex items-start space-x-3 group">
+                                <img src="https://i.ibb.co.com/Kcr6DznJ/image.png" class="w-10 h-10 rounded-full border border-brand-500 flex-shrink-0 object-cover mt-1" alt="主管">
+                                <div class="flex-grow">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="text-xs font-bold text-brand-700">主管</span>
+                                        <button onclick="playSingleAudio('https://files.catbox.moe/2xpgsg.mp3')" class="w-7 h-7 rounded-full bg-brand-50 hover:bg-brand-100 text-brand-600 flex items-center justify-center transition" title="播放此句">
+                                            <i class="fa-solid fa-volume-high text-xs"></i>
+                                        </button>
+                                    </div>
+                                    <div class="bg-brand-50/70 border border-brand-100 p-3.5 rounded-2xl rounded-tl-none">
+                                        <p class="pinyin-text text-xs text-brand-800 font-mono mb-0.5">Xià zhōu yī qián yào bǎ wénjiàn fā gěi kèhù, yǒu kùnnan ma?</p>
+                                        <p class="text-slate-900 text-base font-medium">下周一前要把文件<span class="text-pinkcustom-600 font-bold border-b border-pinkcustom-400">发</span>给客户，有困难吗？</p>
+                                        <p class="trans-text text-xs text-slate-500 mt-1 italic">We need to send him the file by next Monday. Do you have any difficulty?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Line 4: Assistant -->
+                            <div class="flex items-start space-x-3 group flex-row-reverse space-x-reverse">
+                                <img src="https://i.ibb.co.com/V0YzBSjq/image.png" class="w-10 h-10 rounded-full border border-pinkcustom-500 flex-shrink-0 object-cover mt-1" alt="助理">
+                                <div class="flex-grow text-right">
+                                    <div class="flex items-center space-x-2 mb-1 justify-end">
+                                        <button onclick="playSingleAudio('https://files.catbox.moe/0yegu1.mp3')" class="w-7 h-7 rounded-full bg-pinkcustom-50 hover:bg-pinkcustom-100 text-pinkcustom-600 flex items-center justify-center transition" title="播放此句">
+                                            <i class="fa-solid fa-volume-high text-xs"></i>
+                                        </button>
+                                        <span class="text-xs font-bold text-pinkcustom-600">助理</span>
+                                    </div>
+                                    <div class="bg-pinkcustom-50/70 border border-pinkcustom-100 p-3.5 rounded-2xl rounded-tr-none text-left">
+                                        <p class="pinyin-text text-xs text-pinkcustom-800 font-mono mb-0.5">Yīnggāi méi wèntí, nǐ xīngqīsān zài tíxǐng wǒ yíxià.</p>
+                                        <p class="text-slate-900 text-base font-medium"><span class="text-pinkcustom-600 font-bold border-b border-pinkcustom-400">应该</span>没问题，你星期三<span class="text-pinkcustom-600 font-bold border-b border-pinkcustom-400">再</span><span class="text-pinkcustom-600 font-bold border-b border-pinkcustom-400">提醒</span>我一下。</p>
+                                        <p class="trans-text text-xs text-slate-500 mt-1 italic">That should be no problem. Remind me on Wednesday.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Line 5: Supervisor -->
+                            <div class="flex items-start space-x-3 group">
+                                <img src="https://i.ibb.co.com/Kcr6DznJ/image.png" class="w-10 h-10 rounded-full border border-brand-500 flex-shrink-0 object-cover mt-1" alt="主管">
+                                <div class="flex-grow">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="text-xs font-bold text-brand-700">主管</span>
+                                        <button onclick="playSingleAudio('https://files.catbox.moe/twnq48.mp3')" class="w-7 h-7 rounded-full bg-brand-50 hover:bg-brand-100 text-brand-600 flex items-center justify-center transition" title="播放此句">
+                                            <i class="fa-solid fa-volume-high text-xs"></i>
+                                        </button>
+                                    </div>
+                                    <div class="bg-brand-50/70 border border-brand-100 p-3.5 rounded-2xl rounded-tl-none">
+                                        <p class="pinyin-text text-xs text-brand-800 font-mono mb-0.5">Nǐ qīngchu kèhù de yāoqiú ma?</p>
+                                        <p class="text-slate-900 text-base font-medium">你<span class="text-pinkcustom-600 font-bold border-b border-pinkcustom-400">清楚</span>客户的<span class="text-pinkcustom-600 font-bold border-b border-pinkcustom-400">要求</span>吗？</p>
+                                        <p class="trans-text text-xs text-slate-500 mt-1 italic">Do you understand the client's requirements?</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Line 6: Assistant -->
+                            <div class="flex items-start space-x-3 group flex-row-reverse space-x-reverse">
+                                <img src="https://i.ibb.co.com/V0YzBSjq/image.png" class="w-10 h-10 rounded-full border border-pinkcustom-500 flex-shrink-0 object-cover mt-1" alt="助理">
+                                <div class="flex-grow text-right">
+                                    <div class="flex items-center space-x-2 mb-1 justify-end">
+                                        <button onclick="playSingleAudio('https://files.catbox.moe/0humtu.mp3')" class="w-7 h-7 rounded-full bg-pinkcustom-50 hover:bg-pinkcustom-100 text-pinkcustom-600 flex items-center justify-center transition" title="播放此句">
+                                            <i class="fa-solid fa-volume-high text-xs"></i>
+                                        </button>
+                                        <span class="text-xs font-bold text-pinkcustom-600">助理</span>
+                                    </div>
+                                    <div class="bg-pinkcustom-50/70 border border-pinkcustom-100 p-3.5 rounded-2xl rounded-tr-none text-left">
+                                        <p class="pinyin-text text-xs text-pinkcustom-800 font-mono mb-0.5">Bié dānxīn, kèhù zěnme yāoqiú wǒmen zěnme zuò.</p>
+                                        <p class="text-slate-900 text-base font-medium">别<span class="text-pinkcustom-600 font-bold border-b border-pinkcustom-400">担心</span>，客户怎么<span class="text-pinkcustom-600 font-bold border-b border-pinkcustom-400">要求</span>我们怎么做。</p>
+                                        <p class="trans-text text-xs text-slate-500 mt-1 italic">Don't worry. We will do whatever the client requests.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Pink Vocabulary Section (5 cols) -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-pinkcustom-50/70 to-white rounded-2xl p-5 sm:p-6 shadow-sm border border-pinkcustom-100 flex flex-col justify-between">
+                    <div>
+                        <div class="pb-3 mb-4 border-b border-pinkcustom-200/60 flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-pinkcustom-600 text-lg flex items-center space-x-2">
+                                    <i class="fa-solid fa-book-bookmark"></i>
+                                    <span>生词学习 (Vocabulary)</span>
+                                </h3>
+                                <p class="text-xs text-pinkcustom-500">根据教材标注整理的关键商务词汇</p>
+                            </div>
+                            <span class="bg-pinkcustom-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">7 Words</span>
+                        </div>
+
+                        <!-- Vocabulary Cards List -->
+                        <div class="space-y-3 custom-scrollbar max-h-[620px] overflow-y-auto pr-1">
+                            <!-- Vocab 1 -->
+                            <div class="bg-white p-3.5 rounded-xl border border-pinkcustom-100 shadow-sm hover:shadow-md transition">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-baseline space-x-2">
+                                        <span class="text-lg font-bold text-slate-900">得</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600">děi</span>
+                                    </div>
+                                    <span class="text-[10px] bg-pinkcustom-100 text-pinkcustom-600 px-1.5 py-0.5 rounded font-semibold">[aux.]</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">should; have to; must</p>
+                                <p class="text-[11px] text-slate-400 mt-1 bg-slate-50 p-1.5 rounded border border-slate-100">例句：我们<span class="text-pinkcustom-600 font-semibold">得</span>把文件写好。</p>
+                            </div>
+
+                            <!-- Vocab 2 -->
+                            <div class="bg-white p-3.5 rounded-xl border border-pinkcustom-100 shadow-sm hover:shadow-md transition">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-baseline space-x-2">
+                                        <span class="text-lg font-bold text-slate-900">发</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600">fā</span>
+                                    </div>
+                                    <span class="text-[10px] bg-pinkcustom-100 text-pinkcustom-600 px-1.5 py-0.5 rounded font-semibold">[v.]</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">send out; issue; email</p>
+                                <p class="text-[11px] text-slate-400 mt-1 bg-slate-50 p-1.5 rounded border border-slate-100">例句：把文件<span class="text-pinkcustom-600 font-semibold">发</span>给客户。</p>
+                            </div>
+
+                            <!-- Vocab 3 -->
+                            <div class="bg-white p-3.5 rounded-xl border border-pinkcustom-100 shadow-sm hover:shadow-md transition">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-baseline space-x-2">
+                                        <span class="text-lg font-bold text-slate-900">应该</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600">yīnggāi</span>
+                                    </div>
+                                    <span class="text-[10px] bg-pinkcustom-100 text-pinkcustom-600 px-1.5 py-0.5 rounded font-semibold">[aux.]</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">should; ought to; should be</p>
+                                <p class="text-[11px] text-slate-400 mt-1 bg-slate-50 p-1.5 rounded border border-slate-100">例句：<span class="text-pinkcustom-600 font-semibold">应该</span>没问题。</p>
+                            </div>
+
+                            <!-- Vocab 4 -->
+                            <div class="bg-white p-3.5 rounded-xl border border-pinkcustom-100 shadow-sm hover:shadow-md transition">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-baseline space-x-2">
+                                        <span class="text-lg font-bold text-slate-900">再</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600">zài</span>
+                                    </div>
+                                    <span class="text-[10px] bg-pinkcustom-100 text-pinkcustom-600 px-1.5 py-0.5 rounded font-semibold">[adv.]</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">again; further; then</p>
+                                <p class="text-[11px] text-slate-400 mt-1 bg-slate-50 p-1.5 rounded border border-slate-100">例句：你星期三<span class="text-pinkcustom-600 font-semibold">再</span>提醒我一下。</p>
+                            </div>
+
+                            <!-- Vocab 5 -->
+                            <div class="bg-white p-3.5 rounded-xl border border-pinkcustom-100 shadow-sm hover:shadow-md transition">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-baseline space-x-2">
+                                        <span class="text-lg font-bold text-slate-900">提醒</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600">tíxǐng</span>
+                                    </div>
+                                    <span class="text-[10px] bg-pinkcustom-100 text-pinkcustom-600 px-1.5 py-0.5 rounded font-semibold">[v.]</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">remind; warn; call attention to</p>
+                                <p class="text-[11px] text-slate-400 mt-1 bg-slate-50 p-1.5 rounded border border-slate-100">例句：请<span class="text-pinkcustom-600 font-semibold">提醒</span>我一下。</p>
+                            </div>
+
+                            <!-- Vocab 6 -->
+                            <div class="bg-white p-3.5 rounded-xl border border-pinkcustom-100 shadow-sm hover:shadow-md transition">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-baseline space-x-2">
+                                        <span class="text-lg font-bold text-slate-900">要求</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600">yāoqiú</span>
+                                    </div>
+                                    <span class="text-[10px] bg-pinkcustom-100 text-pinkcustom-600 px-1.5 py-0.5 rounded font-semibold">[n./v.]</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">request; demand; requirement</p>
+                                <p class="text-[11px] text-slate-400 mt-1 bg-slate-50 p-1.5 rounded border border-slate-100">例句：清楚客户的<span class="text-pinkcustom-600 font-semibold">要求</span>。</p>
+                            </div>
+
+                            <!-- Vocab 7 -->
+                            <div class="bg-white p-3.5 rounded-xl border border-pinkcustom-100 shadow-sm hover:shadow-md transition">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-baseline space-x-2">
+                                        <span class="text-lg font-bold text-slate-900">担心</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600">dānxīn</span>
+                                    </div>
+                                    <span class="text-[10px] bg-pinkcustom-100 text-pinkcustom-600 px-1.5 py-0.5 rounded font-semibold">[v.]</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1">worry; be anxious; feel concerned</p>
+                                <p class="text-[11px] text-slate-400 mt-1 bg-slate-50 p-1.5 rounded border border-slate-100">例句：别<span class="text-pinkcustom-600 font-semibold">担心</span>，没问题。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Control Button Bar -->
+            <div class="flex justify-between items-center pt-2">
+                <button onclick="switchTab(2)" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 font-medium text-sm flex items-center space-x-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>返回听力理解</span>
+                </button>
+                <button onclick="switchTab(4)" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-2.5 rounded-xl shadow-lg shadow-brand-500/20 flex items-center space-x-2 text-sm">
+                    <span>进入发音与朗读练习</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 4: 语音与朗读练习 -->
+        <section id="page-4" class="page-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                        <i class="fa-solid fa-microphone-lines text-brand-600"></i>
+                        <span>发音与句子朗读练习 (Speech Practice & Shadowing)</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">请先听标准示范发音，然后使用麦克风录音跟读评测。</p>
+                </div>
+
+                <!-- Practice Modes Grid -->
+                <div class="space-y-8">
+                    
+                    <!-- Section A: Vocabulary Pronunciation -->
+                    <div>
+                        <h3 class="text-base font-bold text-slate-800 mb-3 flex items-center space-x-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-pinkcustom-500"></span>
+                            <span>一、生词发音跟读 (Vocabulary Practice)</span>
+                        </h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Word 1 -->
+                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col justify-between">
+                                <div class="flex justify-between items-center mb-3">
+                                    <div>
+                                        <span class="text-xl font-bold text-slate-900">得</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600 ml-2">děi</span>
+                                    </div>
+                                    <button onclick="speakTTS('得')" class="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 text-brand-600 hover:bg-brand-50 flex items-center justify-center transition" title="示范发音">
+                                        <i class="fa-solid fa-volume-high text-xs"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center space-x-2 pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-w-1', 'score-w-1')" class="flex-1 py-1.5 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 flex items-center justify-center space-x-1.5 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-w-1-txt">点击录音</span>
+                                    </button>
+                                    <div id="score-w-1" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200 hidden">96分 Great</div>
+                                </div>
+                            </div>
+
+                            <!-- Word 2 -->
+                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col justify-between">
+                                <div class="flex justify-between items-center mb-3">
+                                    <div>
+                                        <span class="text-xl font-bold text-slate-900">发</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600 ml-2">fā</span>
+                                    </div>
+                                    <button onclick="speakTTS('发')" class="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 text-brand-600 hover:bg-brand-50 flex items-center justify-center transition" title="示范发音">
+                                        <i class="fa-solid fa-volume-high text-xs"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center space-x-2 pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-w-2', 'score-w-2')" class="flex-1 py-1.5 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 flex items-center justify-center space-x-1.5 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-w-2-txt">点击录音</span>
+                                    </button>
+                                    <div id="score-w-2" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200 hidden">98分 Perfect</div>
+                                </div>
+                            </div>
+
+                            <!-- Word 3 -->
+                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col justify-between">
+                                <div class="flex justify-between items-center mb-3">
+                                    <div>
+                                        <span class="text-xl font-bold text-slate-900">应该</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600 ml-2">yīnggāi</span>
+                                    </div>
+                                    <button onclick="speakTTS('应该')" class="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 text-brand-600 hover:bg-brand-50 flex items-center justify-center transition" title="示范发音">
+                                        <i class="fa-solid fa-volume-high text-xs"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center space-x-2 pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-w-3', 'score-w-3')" class="flex-1 py-1.5 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 flex items-center justify-center space-x-1.5 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-w-3-txt">点击录音</span>
+                                    </button>
+                                    <div id="score-w-3" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200 hidden">95分 Great</div>
+                                </div>
+                            </div>
+
+                            <!-- Word 4 -->
+                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col justify-between">
+                                <div class="flex justify-between items-center mb-3">
+                                    <div>
+                                        <span class="text-xl font-bold text-slate-900">提醒</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600 ml-2">tíxǐng</span>
+                                    </div>
+                                    <button onclick="speakTTS('提醒')" class="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 text-brand-600 hover:bg-brand-50 flex items-center justify-center transition" title="示范发音">
+                                        <i class="fa-solid fa-volume-high text-xs"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center space-x-2 pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-w-4', 'score-w-4')" class="flex-1 py-1.5 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 flex items-center justify-center space-x-1.5 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-w-4-txt">点击录音</span>
+                                    </button>
+                                    <div id="score-w-4" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200 hidden">92分 Good</div>
+                                </div>
+                            </div>
+
+                            <!-- Word 5 -->
+                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col justify-between">
+                                <div class="flex justify-between items-center mb-3">
+                                    <div>
+                                        <span class="text-xl font-bold text-slate-900">要求</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600 ml-2">yāoqiú</span>
+                                    </div>
+                                    <button onclick="speakTTS('要求')" class="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 text-brand-600 hover:bg-brand-50 flex items-center justify-center transition" title="示范发音">
+                                        <i class="fa-solid fa-volume-high text-xs"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center space-x-2 pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-w-5', 'score-w-5')" class="flex-1 py-1.5 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 flex items-center justify-center space-x-1.5 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-w-5-txt">点击录音</span>
+                                    </button>
+                                    <div id="score-w-5" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200 hidden">94分 Excellent</div>
+                                </div>
+                            </div>
+
+                            <!-- Word 6 -->
+                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-col justify-between">
+                                <div class="flex justify-between items-center mb-3">
+                                    <div>
+                                        <span class="text-xl font-bold text-slate-900">担心</span>
+                                        <span class="text-xs font-mono text-pinkcustom-600 ml-2">dānxīn</span>
+                                    </div>
+                                    <button onclick="speakTTS('担心')" class="w-8 h-8 rounded-full bg-white shadow-sm border border-slate-200 text-brand-600 hover:bg-brand-50 flex items-center justify-center transition" title="示范发音">
+                                        <i class="fa-solid fa-volume-high text-xs"></i>
+                                    </button>
+                                </div>
+                                <div class="flex items-center space-x-2 pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-w-6', 'score-w-6')" class="flex-1 py-1.5 px-3 bg-white border border-slate-300 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-100 flex items-center justify-center space-x-1.5 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-w-6-txt">点击录音</span>
+                                    </button>
+                                    <div id="score-w-6" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded border border-emerald-200 hidden">97分 Perfect</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section B: Key Sentence Shadowing Practice -->
+                    <div class="pt-4 border-t border-slate-100">
+                        <h3 class="text-base font-bold text-slate-800 mb-4 flex items-center space-x-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-500"></span>
+                            <span>二、重点句子影子跟读 (Sentence Shadowing Practice)</span>
+                        </h3>
+
+                        <div class="space-y-4">
+                            <!-- Sentence Line 1 -->
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                    <div>
+                                        <p class="text-xs text-brand-600 font-mono mb-0.5">Wǒmen děi bǎ zhè fèn wénjiàn xiě hǎo.</p>
+                                        <p class="text-base font-medium text-slate-900">“我们得把这份文件写好。”</p>
+                                    </div>
+                                    <button onclick="playSingleAudio('https://files.catbox.moe/ga63r2.mp3')" class="px-3 py-1.5 bg-brand-50 hover:bg-brand-100 text-brand-600 rounded-lg text-xs font-medium flex items-center space-x-1 transition self-start sm:self-auto">
+                                        <i class="fa-solid fa-play text-xs"></i>
+                                        <span>主管原音示范</span>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-s-1', 'score-s-1')" class="px-4 py-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 flex items-center space-x-2 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-s-1-txt">开始朗读录音</span>
+                                    </button>
+                                    <div id="score-s-1" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 hidden">
+                                        <i class="fa-solid fa-award mr-1"></i>评估得分：95分 (优秀)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sentence Line 2 -->
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                    <div>
+                                        <p class="text-xs text-brand-600 font-mono mb-0.5">Xià zhōu yī qián yào bǎ wénjiàn fā gěi kèhù, yǒu kùnnan ma?</p>
+                                        <p class="text-base font-medium text-slate-900">“下周一前要把文件发给客户，有困难吗？”</p>
+                                    </div>
+                                    <button onclick="playSingleAudio('https://files.catbox.moe/2xpgsg.mp3')" class="px-3 py-1.5 bg-brand-50 hover:bg-brand-100 text-brand-600 rounded-lg text-xs font-medium flex items-center space-x-1 transition self-start sm:self-auto">
+                                        <i class="fa-solid fa-play text-xs"></i>
+                                        <span>主管原音示范</span>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-s-2', 'score-s-2')" class="px-4 py-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 flex items-center space-x-2 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-s-2-txt">开始朗读录音</span>
+                                    </button>
+                                    <div id="score-s-2" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 hidden">
+                                        <i class="fa-solid fa-award mr-1"></i>评估得分：93分 (标准)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sentence Line 3 -->
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                    <div>
+                                        <p class="text-xs text-pinkcustom-600 font-mono mb-0.5">Yīnggāi méi wèntí, nǐ xīngqīsān zài tíxǐng wǒ yíxià.</p>
+                                        <p class="text-base font-medium text-slate-900">“应该没问题，你星期三再提醒我一下。”</p>
+                                    </div>
+                                    <button onclick="playSingleAudio('https://files.catbox.moe/0yegu1.mp3')" class="px-3 py-1.5 bg-pinkcustom-50 hover:bg-pinkcustom-100 text-pinkcustom-600 rounded-lg text-xs font-medium flex items-center space-x-1 transition self-start sm:self-auto">
+                                        <i class="fa-solid fa-play text-xs"></i>
+                                        <span>助理原音示范</span>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-s-3', 'score-s-3')" class="px-4 py-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 flex items-center space-x-2 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-s-3-txt">开始朗读录音</span>
+                                    </button>
+                                    <div id="score-s-3" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 hidden">
+                                        <i class="fa-solid fa-award mr-1"></i>评估得分：97分 (完美)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sentence Line 4 -->
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                    <div>
+                                        <p class="text-xs text-pinkcustom-600 font-mono mb-0.5">Bié dānxīn, kèhù zěnme yāoqiú wǒmen zěnme zuò.</p>
+                                        <p class="text-base font-medium text-slate-900">“别担心，客户怎么要求我们怎么做。”</p>
+                                    </div>
+                                    <button onclick="playSingleAudio('https://files.catbox.moe/0humtu.mp3')" class="px-3 py-1.5 bg-pinkcustom-50 hover:bg-pinkcustom-100 text-pinkcustom-600 rounded-lg text-xs font-medium flex items-center space-x-1 transition self-start sm:self-auto">
+                                        <i class="fa-solid fa-play text-xs"></i>
+                                        <span>助理原音示范</span>
+                                    </button>
+                                </div>
+                                <div class="flex items-center justify-between pt-2 border-t border-slate-200/60">
+                                    <button onclick="startRecording('rec-s-4', 'score-s-4')" class="px-4 py-2 bg-white border border-slate-300 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-100 flex items-center space-x-2 transition">
+                                        <i class="fa-solid fa-microphone text-red-500"></i>
+                                        <span id="rec-s-4-txt">开始朗读录音</span>
+                                    </button>
+                                    <div id="score-s-4" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 hidden">
+                                        <i class="fa-solid fa-award mr-1"></i>评估得分：98分 (地道)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completion Card -->
+            <div class="bg-gradient-to-r from-brand-600 to-indigo-600 rounded-2xl p-6 text-white shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-2xl">
+                        🎉
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">恭喜完成商务汉语对话4的学习！</h4>
+                        <p class="text-xs text-brand-100 mt-0.5">您已成功掌握了工作任务与客户沟通的相关句型与生词。</p>
+                    </div>
+                </div>
+                <button onclick="switchTab(1)" class="bg-white text-brand-700 font-bold px-5 py-2.5 rounded-xl shadow hover:bg-brand-50 transition text-sm flex-shrink-0">
+                    重新学习此课
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Audio Player (Hidden helper) -->
+    <audio id="single-audio" class="hidden"></audio>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
+        <p>商务汉语对话练习平台 &copy; 2026 Interactive Business Chinese Learning</p>
+    </footer>
+
+    <!-- Interactive JavaScript Code -->
+    <script>
+        // Global state variables
+        let pinyinVisible = true;
+        let transVisible = true;
+
+        // Tab Switching Logic
+        function switchTab(pageNum) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
+            });
+
+            // Show selected page
+            const activePage = document.getElementById(`page-${pageNum}`);
+            if (activePage) {
+                activePage.classList.remove('hidden');
+                activePage.classList.add('block');
+            }
+
+            // Update Header Tab styling (Desktop)
+            document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+                if (idx + 1 === pageNum) {
+                    btn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-brand-600 bg-brand-50';
+                } else {
+                    btn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100';
+                }
+            });
+
+            // Update Mobile Tab styling
+            for (let i = 1; i <= 4; i++) {
+                const mobBtn = document.getElementById(`mob-tab-${i}`);
+                if (mobBtn) {
+                    if (i === pageNum) {
+                        mobBtn.className = 'flex-1 py-2 text-brand-600 bg-white font-semibold border-b-2 border-brand-600';
+                    } else {
+                        mobBtn.className = 'flex-1 py-2 text-slate-600';
+                    }
+                }
+            }
+
+            // Stop ongoing audio
+            pauseAllAudio();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Safely pause audio element without triggering unhandled promise rejection
+        function safePause(audioEl) {
+            if (!audioEl) return;
+            try {
+                audioEl.pause();
+            } catch (e) {
+                console.log('Pause interrupted or ignored:', e);
+            }
+        }
+
+        // Pause all audio players safely
+        function pauseAllAudio() {
+            const fullAudio = document.getElementById('full-audio');
+            const singleAudio = document.getElementById('single-audio');
+            safePause(fullAudio);
+            safePause(singleAudio);
+        }
+
+        // Audio Playback Helpers
+        function playFullAudio() {
+            const fullAudio = document.getElementById('full-audio');
+            if (fullAudio) {
+                fullAudio.currentTime = 0;
+                const promise = fullAudio.play();
+                if (promise !== undefined) {
+                    promise.catch(error => {
+                        if (error.name !== 'AbortError') {
+                            console.log('Playback error:', error);
+                        }
+                    });
+                }
+            }
+        }
+
+        function changeSpeed(rate) {
+            const fullAudio = document.getElementById('full-audio');
+            if (fullAudio) {
+                fullAudio.playbackRate = parseFloat(rate);
+            }
+        }
+
+        function playSingleAudio(url) {
+            const singleAudio = document.getElementById('single-audio');
+            const fullAudio = document.getElementById('full-audio');
+            
+            // Pause full audio safely
+            safePause(fullAudio);
+
+            if (singleAudio) {
+                safePause(singleAudio);
+                singleAudio.src = url;
+                const promise = singleAudio.play();
+                if (promise !== undefined) {
+                    promise.catch(error => {
+                        if (error.name !== 'AbortError') {
+                            console.log('Audio playback blocked or interrupted:', error);
+                        }
+                    });
+                }
+            }
+        }
+
+        // Quiz Logic
+        function checkAnswer(qNum, selectedOpt, isCorrect, btnElement) {
+            const options = document.querySelectorAll(`.q${qNum}-opt`);
+            options.forEach(opt => {
+                opt.disabled = true;
+                opt.classList.remove('hover:bg-slate-100');
+            });
+
+            const feedbackEl = document.getElementById(`q${qNum}-feedback`);
+            feedbackEl.classList.remove('hidden');
+
+            if (isCorrect) {
+                btnElement.className = 'q' + qNum + '-opt text-left px-4 py-3 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-900 text-sm font-bold transition flex justify-between items-center';
+                btnElement.innerHTML += ' <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>';
+                
+                feedbackEl.className = 'mt-3 pl-8 text-xs font-semibold text-emerald-700 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200 flex items-center space-x-2';
+                feedbackEl.innerHTML = '<i class="fa-solid fa-check"></i> <span>回答正确！抓住了对话中的核心要点。</span>';
+            } else {
+                btnElement.className = 'q' + qNum + '-opt text-left px-4 py-3 rounded-lg border-2 border-rose-400 bg-rose-50 text-rose-900 text-sm font-medium transition flex justify-between items-center';
+                btnElement.innerHTML += ' <i class="fa-solid fa-circle-xmark text-rose-500 text-base"></i>';
+
+                feedbackEl.className = 'mt-3 pl-8 text-xs font-semibold text-rose-700 bg-rose-50 p-2.5 rounded-lg border border-rose-200 flex items-center space-x-2';
+                feedbackEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> <span>回答有误，请重新听录音确认。</span>';
+            }
+        }
+
+        // Toggle Pinyin
+        function togglePinyin() {
+            pinyinVisible = !pinyinVisible;
+            const pinyinNodes = document.querySelectorAll('.pinyin-text');
+            const btn = document.getElementById('pinyin-toggle-btn');
+            
+            pinyinNodes.forEach(node => {
+                if (pinyinVisible) {
+                    node.classList.remove('hidden');
+                } else {
+                    node.classList.add('hidden');
+                }
+            });
+
+            btn.innerText = `拼音: ${pinyinVisible ? '显' : '隐'}`;
+        }
+
+        // Toggle Translation
+        function toggleTrans() {
+            transVisible = !transVisible;
+            const transNodes = document.querySelectorAll('.trans-text');
+            const btn = document.getElementById('trans-toggle-btn');
+
+            transNodes.forEach(node => {
+                if (transVisible) {
+                    node.classList.remove('hidden');
+                } else {
+                    node.classList.add('hidden');
+                }
+            });
+
+            btn.innerText = `英文: ${transVisible ? '显' : '隐'}`;
+        }
+
+        // Text To Speech Fallback
+        function speakTTS(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('您的浏览器暂不支持语音播报。');
+            }
+        }
+
+        // Recording & Evaluation Simulation
+        function startRecording(btnId, scoreId) {
+            const txtEl = document.getElementById(`${btnId}-txt`);
+            const scoreEl = document.getElementById(scoreId);
+            
+            if (!txtEl) return;
+
+            txtEl.innerText = "正在录音...";
+            txtEl.parentElement.classList.add('pulse-recording', 'bg-red-50', 'border-red-400');
+
+            setTimeout(() => {
+                txtEl.innerText = "重新录音";
+                txtEl.parentElement.classList.remove('pulse-recording', 'bg-red-50', 'border-red-400');
+
+                if (scoreEl) {
+                    scoreEl.classList.remove('hidden');
+                }
+            }, 2200);
+        }
+
+        // Initial setup
+        window.onload = function() {
+            switchTab(1);
+        };
+    </script>
+</body>
+</html>
