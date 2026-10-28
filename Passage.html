@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商务汉语复述短文语音练习平台</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        ambercustom: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .pulse-recording {
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        .interactive-word {
+            cursor: pointer;
+            padding: 2px 4px;
+            margin: 0 1px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+        .interactive-word:hover {
+            background-color: #fef3c7;
+            color: #d97706;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- Header Navigation Bar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-ambercustom-500 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        述
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-slate-900 leading-tight">商务汉语复述短文练习平台</h1>
+                        <p class="text-xs text-slate-500">Chinese Retelling & Vocabulary Building</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex space-x-2">
+                    <button onclick="switchTab(1)" id="tab-btn-1" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-brand-600 bg-brand-50">
+                        <i class="fa-solid fa-headphones"></i>
+                        <span>第一页：盲听理解测验</span>
+                    </button>
+                    <button onclick="switchTab(2)" id="tab-btn-2" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>第二页：课文学习与复述</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- PAGE 1: 盲听理解测验 -->
+        <section id="page-1" class="page-content block space-y-6">
+            <!-- Audio Card Limit Box -->
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-6 text-white shadow-md">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 bg-ambercustom-500/20 text-ambercustom-500 px-3 py-1 rounded-full text-xs font-semibold mb-2 border border-ambercustom-500/30">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <span>听力规则：限制播放最多 2 次</span>
+                        </div>
+                        <h2 class="text-xl font-bold">请先听两遍课文录音，再回答下方问题</h2>
+                        <p class="text-xs text-slate-300 mt-1">此阶段不展示文本，考查您对短文大意的综合理解。</p>
+                    </div>
+
+                    <div class="flex items-center space-x-4 bg-slate-800/80 p-3 rounded-xl border border-slate-700 w-full md:w-auto justify-between md:justify-start">
+                        <button id="play-audio-btn" onclick="playRestrictedAudio()" class="px-5 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-lg font-bold text-sm flex items-center space-x-2 shadow-md transition">
+                            <i class="fa-solid fa-play" id="play-icon"></i>
+                            <span id="play-btn-text">播放录音</span>
+                        </button>
+                        <div class="text-right">
+                            <div class="text-xs text-slate-400">剩余播放次数</div>
+                            <div class="text-lg font-bold text-ambercustom-500" id="play-count-display">2 / 2 次</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden HTML5 Audio Element -->
+                <audio id="restricted-audio" class="hidden">
+                    <source src="https://files.catbox.moe/ugaxli.mp3" type="audio/mpeg">
+                    您的浏览器不支持音频播放。
+                </audio>
+            </div>
+
+            <!-- Quiz Questions Section -->
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center space-x-2">
+                        <i class="fa-solid fa-clipboard-question text-brand-600"></i>
+                        <span>听力理解单项选择题 (Listening Comprehension Questions)</span>
+                    </h3>
+                </div>
+
+                <div class="space-y-8">
+                    <!-- Q1 -->
+                    <div class="quiz-item border border-slate-100 bg-slate-50/50 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-800 text-base mb-3 flex items-start space-x-2">
+                            <span class="bg-brand-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">1</span>
+                            <span>今天“我”去上班了吗？上午在家里做了什么？</span>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-8">
+                            <button onclick="checkAnswer(1, 'A', false, this)" class="q1-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">A. 去上班了，在办公室修门</button>
+                            <button onclick="checkAnswer(1, 'B', true, this)" class="q1-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">B. 没去上班，在家把门修理好了，然后去买水果</button>
+                            <button onclick="checkAnswer(1, 'C', false, this)" class="q1-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">C. 去超市做饭，顺便修理门</button>
+                            <button onclick="checkAnswer(1, 'D', false, this)" class="q1-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">D. 没去上班，一直在家睡觉</button>
+                        </div>
+                        <div id="q1-feedback" class="mt-3 pl-8 hidden"></div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="quiz-item border border-slate-100 bg-slate-50/50 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-800 text-base mb-3 flex items-start space-x-2">
+                            <span class="bg-brand-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">2</span>
+                            <span>“我”在吃饭前后分别做了什么事情？</span>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-8">
+                            <button onclick="checkAnswer(2, 'A', false, this)" class="q2-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">A. 吃饭前寄了信，吃饭后给张经理发邮件</button>
+                            <button onclick="checkAnswer(2, 'B', false, this)" class="q2-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">B. 吃饭前做好了报告，吃饭后去了一趟超市</button>
+                            <button onclick="checkAnswer(2, 'C', true, this)" class="q2-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">C. 吃完饭后把写给小李的信寄了出去，晚饭前给张经理发了邮箱并读完报告</button>
+                            <button onclick="checkAnswer(2, 'D', false, this)" class="q2-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">D. 吃完饭后修理门，晚饭前去开会</button>
+                        </div>
+                        <div id="q2-feedback" class="mt-3 pl-8 hidden"></div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="quiz-item border border-slate-100 bg-slate-50/50 p-5 rounded-xl">
+                        <h4 class="font-bold text-slate-800 text-base mb-3 flex items-start space-x-2">
+                            <span class="bg-brand-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0 mt-0.5">3</span>
+                            <span>“我”对今天的整体感觉是什么？</span>
+                        </h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pl-8">
+                            <button onclick="checkAnswer(3, 'A', false, this)" class="q3-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">A. 非常轻松愉快</button>
+                            <button onclick="checkAnswer(3, 'B', true, this)" class="q3-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">B. 虽然不用上班，但还是觉得很累</button>
+                            <button onclick="checkAnswer(3, 'C', false, this)" class="q3-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">C. 觉得时间过得太慢</button>
+                            <button onclick="checkAnswer(3, 'D', false, this)" class="q3-opt text-left px-4 py-3 rounded-lg border border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-sm font-medium transition">D. 觉得明天不用开会很开心</button>
+                        </div>
+                        <div id="q3-feedback" class="mt-3 pl-8 hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 1 Footer Navigation -->
+            <div class="flex justify-end">
+                <button onclick="switchTab(2)" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-3 rounded-xl shadow-lg shadow-brand-500/20 flex items-center space-x-2 transition">
+                    <span>进入第二页：查看课文与生词积累</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 2: 课文展示、自定义生词本与复述练习 -->
+        <section id="page-2" class="page-content hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Left Column: Interactive Text Card (7 cols) -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                        <div class="flex justify-between items-center border-b border-slate-100 pb-4 mb-4">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg flex items-center space-x-2">
+                                    <i class="fa-solid fa-file-lines text-brand-600"></i>
+                                    <span>课文内容 (Text)</span>
+                                </h3>
+                                <p class="text-xs text-ambercustom-600 mt-0.5">💡 提示：将鼠标移至词语上悬停，可将其加入右侧生词本并查看解析。</p>
+                            </div>
+                            <button onclick="playFullAudioPage2()" class="px-3 py-1.5 bg-brand-50 hover:bg-brand-100 text-brand-600 rounded-lg text-xs font-semibold flex items-center space-x-1.5 transition">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <span>朗读全文</span>
+                            </button>
+                        </div>
+
+                        <!-- Short Text Display with Interactive Word Spans -->
+                        <div class="bg-ambercustom-50/40 p-6 rounded-xl border border-ambercustom-100 text-slate-800 text-lg leading-relaxed space-y-3 font-normal" id="text-container">
+                            今天是星期天，我没有去上班。上午，我在家先把
+                            <span class="interactive-word" onclick="addVocabulary('门', 'mén', 'n.', 'door', '先把门修理好了')">门</span>
+                            <span class="interactive-word" onclick="addVocabulary('修理', 'xiūlǐ', 'v.', 'repair; fix', '我在家先把门修理好了')">修理</span>好了，然后去了一趟
+                            <span class="interactive-word" onclick="addVocabulary('超市', 'chāoshì', 'n.', 'supermarket', '然后去了一趟超市')">超市</span>，把明天
+                            <span class="interactive-word" onclick="addVocabulary('水果', 'shuǐguǒ', 'n.', 'fruit', '把明天的水果买了')">水果</span>买了。回来后，我把东西放在桌上，就去
+                            <span class="interactive-word" onclick="addVocabulary('做饭', 'zuò fàn', 'v.', 'cook', '就去做饭了')">做饭</span>了。吃完饭后，我把写给
+                            <span class="interactive-word" onclick="addVocabulary('小李', 'Xiǎo Lǐ', 'n.', 'Xiao Li (person name)', '把写给小李的信寄了出去')">小李</span>的
+                            <span class="interactive-word" onclick="addVocabulary('信', 'xìn', 'n.', 'letter', '把信寄了出去')">信</span>
+                            <span class="interactive-word" onclick="addVocabulary('寄', 'jì', 'v.', 'mail; send', '把信寄了出去')">寄</span>了出去。晚饭前，我把
+                            <span class="interactive-word" onclick="addVocabulary('张经理', 'Zhāng jīnglǐ', 'n.', 'Manager Zhang', '把张经理需要的文件发到了他的邮箱')">张经理</span>需要的
+                            <span class="interactive-word" onclick="addVocabulary('文件', 'wénjiàn', 'n.', 'document; file', '把文件发到了他的电子邮箱')">文件</span>发到了他的
+                            <span class="interactive-word" onclick="addVocabulary('电子邮箱', 'diànzǐ yóuxiāng', 'n.', 'email address', '发到了他的电子邮箱')">电子邮箱</span>，然后把明天
+                            <span class="interactive-word" onclick="addVocabulary('开会', 'kāihuì', 'v.', 'hold/attend a meeting', '明天开会要的报告')">开会</span>要的
+                            <span class="interactive-word" onclick="addVocabulary('报告', 'bàogào', 'n.', 'report', '把开会要的报告读完了')">报告</span>读完了。今天虽然不用上班，但是我还是觉得很
+                            <span class="interactive-word" onclick="addVocabulary('累', 'lèi', 'adj.', 'tired; exhausted', '我还是觉得很累')">累</span>。
+                        </div>
+                    </div>
+
+                    <!-- Retelling Speech Practice Box -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 space-y-4">
+                        <div class="border-b border-slate-100 pb-3">
+                            <h3 class="font-bold text-slate-900 text-lg flex items-center space-x-2">
+                                <i class="fa-solid fa-microphone text-rose-500"></i>
+                                <span>短文复述语音练习 (Story Retelling)</span>
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-1">请尝试不看原文，用自己的话复述短文的主要内容并录音评测。</p>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <button id="retell-rec-btn" onclick="toggleRetellRecording()" class="w-full sm:w-auto px-6 py-3 bg-rose-500 hover:bg-rose-600 text-white rounded-xl font-bold text-sm flex items-center justify-center space-x-2 transition shadow-md">
+                                <i class="fa-solid fa-microphone" id="rec-icon"></i>
+                                <span id="rec-btn-text">开始复述录音</span>
+                            </button>
+
+                            <div id="retell-score" class="hidden bg-emerald-50 text-emerald-700 px-4 py-2 rounded-xl border border-emerald-200 text-xs font-bold flex items-center space-x-2">
+                                <i class="fa-solid fa-award text-base text-emerald-600"></i>
+                                <span>AI 复述流利度评分：95分（表达流畅，要点完整！）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Accumulated Dynamic Vocabulary List (5 cols) -->
+                <div class="lg:col-span-5 bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="pb-3 mb-4 border-b border-slate-100 flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg flex items-center space-x-2">
+                                    <i class="fa-solid fa-book-bookmark text-ambercustom-500"></i>
+                                    <span>我的个人生词本</span>
+                                </h3>
+                                <p class="text-xs text-slate-500">点击左侧标红词汇即可动态累积入库</p>
+                            </div>
+                            <span id="vocab-count-tag" class="bg-ambercustom-100 text-ambercustom-600 text-xs font-bold px-2.5 py-1 rounded-full">0 个生词</span>
+                        </div>
+
+                        <!-- Empty State -->
+                        <div id="empty-vocab-msg" class="text-center py-12 text-slate-400 text-xs border-2 border-dashed border-slate-100 rounded-xl">
+                            <i class="fa-solid fa-hand-pointer text-3xl mb-2 text-slate-300"></i>
+                            <p>尚未添加生词</p>
+                            <p class="mt-1">请在左侧课文中点击或悬停不熟悉的词语。</p>
+                        </div>
+
+                        <!-- Dynamic Vocab List Container -->
+                        <div id="vocab-list" class="space-y-4 custom-scrollbar max-h-[580px] overflow-y-auto pr-1">
+                            <!-- Dynamic Cards Inserted Here -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Page 2 Navigation -->
+            <div class="flex justify-between items-center pt-2">
+                <button onclick="switchTab(1)" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 font-medium text-sm flex items-center space-x-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>返回第一页：盲听理解测验</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global TTS Helper Audio -->
+    <audio id="global-tts-audio" class="hidden"></audio>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
+        <p>商务汉语复述短文练习平台 &copy; 2026 Interactive Business Chinese Learning</p>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Audio Limit State Variables
+        let playCountLeft = 2;
+        let vocabularySet = new Set();
+        let isRecording = false;
+
+        // Switch Tabs Logic
+        function switchTab(pageNum) {
+            document.querySelectorAll('.page-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
+            });
+
+            const activePage = document.getElementById(`page-${pageNum}`);
+            if (activePage) {
+                activePage.classList.remove('hidden');
+                activePage.classList.add('block');
+            }
+
+            document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+                if (idx + 1 === pageNum) {
+                    btn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-brand-600 bg-brand-50';
+                } else {
+                    btn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100';
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Restricted Audio Player Logic (Max 2 Times)
+        function playRestrictedAudio() {
+            const audio = document.getElementById('restricted-audio');
+            const playBtn = document.getElementById('play-audio-btn');
+            const playIcon = document.getElementById('play-icon');
+            const playBtnText = document.getElementById('play-btn-text');
+            const playCountDisplay = document.getElementById('play-count-display');
+
+            if (playCountLeft <= 0) {
+                alert('听力播放次数已达最大限制（2次）。请根据记忆回答下方题目。');
+                return;
+            }
+
+            if (audio.paused) {
+                audio.play();
+                playCountLeft--;
+                playCountDisplay.innerText = `${playCountLeft} / 2 次`;
+                
+                playIcon.className = "fa-solid fa-pause";
+                playBtnText.innerText = "暂停播放";
+
+                if (playCountLeft === 0) {
+                    playBtn.classList.remove('bg-brand-600', 'hover:bg-brand-500');
+                    playBtn.classList.add('bg-slate-600', 'cursor-not-allowed');
+                }
+            } else {
+                audio.pause();
+                playIcon.className = "fa-solid fa-play";
+                playBtnText.innerText = "继续播放";
+            }
+
+            audio.onended = function() {
+                playIcon.className = "fa-solid fa-play";
+                playBtnText.innerText = playCountLeft > 0 ? "再次播放" : "次数已用完";
+            };
+        }
+
+        // Quiz Evaluation Logic
+        function checkAnswer(qNum, selectedOpt, isCorrect, btnElement) {
+            const options = document.querySelectorAll(`.q${qNum}-opt`);
+            options.forEach(opt => {
+                opt.disabled = true;
+                opt.classList.remove('hover:bg-slate-100');
+            });
+
+            const feedbackEl = document.getElementById(`q${qNum}-feedback`);
+            feedbackEl.classList.remove('hidden');
+
+            if (isCorrect) {
+                btnElement.className = 'q' + qNum + '-opt text-left px-4 py-3 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-emerald-900 text-sm font-bold transition flex justify-between items-center';
+                btnElement.innerHTML += ' <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>';
+                
+                feedbackEl.className = 'mt-3 pl-8 text-xs font-semibold text-emerald-700 bg-emerald-50 p-2.5 rounded-lg border border-emerald-200 flex items-center space-x-2';
+                feedbackEl.innerHTML = '<i class="fa-solid fa-check"></i> <span>回答正确！抓取到了课文的关键细节。</span>';
+            } else {
+                btnElement.className = 'q' + qNum + '-opt text-left px-4 py-3 rounded-lg border-2 border-rose-400 bg-rose-50 text-rose-900 text-sm font-medium transition flex justify-between items-center';
+                btnElement.innerHTML += ' <i class="fa-solid fa-circle-xmark text-rose-500 text-base"></i>';
+
+                feedbackEl.className = 'mt-3 pl-8 text-xs font-semibold text-rose-700 bg-rose-50 p-2.5 rounded-lg border border-rose-200 flex items-center space-x-2';
+                feedbackEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> <span>回答有误，进入第二页后可仔细阅读对照文本。</span>';
+            }
+        }
+
+        // Add Vocabulary dynamically on hover/click
+        function addVocabulary(word, pinyin, pos, trans, example) {
+            if (vocabularySet.has(word)) return; // prevent duplicate
+
+            vocabularySet.add(word);
+            document.getElementById('empty-vocab-msg').classList.add('hidden');
+            
+            const countTag = document.getElementById('vocab-count-tag');
+            countTag.innerText = `${vocabularySet.size} 个生词`;
+
+            const vocabList = document.getElementById('vocab-list');
+            const cardId = `vocab-card-${Date.now()}`;
+
+            const cardHTML = `
+                <div id="${cardId}" class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm space-y-3 transition transform hover:-translate-y-0.5">
+                    <div class="flex justify-between items-start">
+                        <div class="flex items-baseline space-x-2">
+                            <span class="text-xl font-bold text-slate-900">${word}</span>
+                            <span class="text-xs font-mono text-ambercustom-600">${pinyin}</span>
+                        </div>
+                        <div class="flex items-center space-x-1.5">
+                            <span class="text-[10px] bg-ambercustom-100 text-ambercustom-600 font-semibold px-2 py-0.5 rounded">${pos}</span>
+                            <button onclick="speakWord('${word}')" class="w-6 h-6 rounded-full bg-white text-slate-600 hover:text-brand-600 border border-slate-200 flex items-center justify-center transition" title="朗读生词">
+                                <i class="fa-solid fa-volume-high text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-600 font-medium"><span class="text-slate-400">释义：</span>${trans}</p>
+                    <p class="text-xs text-slate-500 bg-white p-2 rounded border border-slate-100"><span class="text-slate-400">课文原句：</span>${example}</p>
+                    
+                    <!-- Student Sentence Typing Input -->
+                    <div class="pt-2 border-t border-slate-200/60">
+                        <label class="block text-[11px] text-slate-500 font-semibold mb-1">✍️ 学生造句练习 (Type your sentence):</label>
+                        <input type="text" placeholder="用“${word}”造一个句子..." class="w-full text-xs p-2 rounded-lg border border-slate-300 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 bg-white">
+                    </div>
+                </div>
+            `;
+
+            vocabList.insertAdjacentHTML('afterbegin', cardHTML);
+            speakWord(word); // auto speak pronunciation when added
+        }
+
+        // Speak single word using TTS
+        function speakWord(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Full Audio Play on Page 2
+        function playFullAudioPage2() {
+            const fullAudio = document.getElementById('restricted-audio');
+            if (fullAudio) {
+                fullAudio.currentTime = 0;
+                fullAudio.play();
+            }
+        }
+
+        // Retelling Voice Recording Simulation
+        function toggleRetellRecording() {
+            const btnText = document.getElementById('rec-btn-text');
+            const icon = document.getElementById('rec-icon');
+            const score = document.getElementById('retell-score');
+            const btn = document.getElementById('retell-rec-btn');
+
+            if (!isRecording) {
+                isRecording = true;
+                btnText.innerText = "录音中... 点击完成";
+                icon.className = "fa-solid fa-stop";
+                btn.classList.add('pulse-recording', 'bg-red-600');
+            } else {
+                isRecording = false;
+                btnText.innerText = "重新录音";
+                icon.className = "fa-solid fa-microphone";
+                btn.classList.remove('pulse-recording', 'bg-red-600');
+                score.classList.remove('hidden');
+            }
+        }
+
+        // Initial setup
+        window.onload = function() {
+            switchTab(1);
+        };
+    </script>
+</body>
+</html>
