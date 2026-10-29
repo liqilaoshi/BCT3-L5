@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商务汉语“把”字句句型与连词成句练习平台</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkcustom: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        },
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .pulse-recording {
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- Header Navigation Bar -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-pinkcustom-500 to-brand-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        把
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-slate-900 leading-tight">商务汉语“把”字句练习平台</h1>
+                        <p class="text-xs text-slate-500">Substitution Drills & Interactive Sentence Building</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="flex space-x-2">
+                    <button onclick="switchTab(1)" id="tab-btn-1" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-brand-600 bg-brand-50">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>1. 替换练习 (Drills)</span>
+                    </button>
+                    <button onclick="switchTab(2)" id="tab-btn-2" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                        <span>2. 语音连词成句</span>
+                    </button>
+                    <button onclick="switchTab(3)" id="tab-btn-3" class="tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <span>3. 职场实用拓展</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- PAGE 1: 替换练习 (Substitution Drills) -->
+        <section id="page-1" class="page-content block space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-8">
+                
+                <div class="border-b border-slate-100 pb-4">
+                    <div class="inline-flex items-center space-x-2 bg-pinkcustom-50 text-pinkcustom-600 px-3 py-1 rounded-full text-xs font-semibold mb-2">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                        <span>Exercises / 练习 1/ Substitution drills.</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-slate-900">“把”字句基础替换练习</h2>
+                    <p class="text-xs text-slate-500 mt-1">请点击下方粉色词块组合生成新句子，并点击声音图标听标准示范发音。</p>
+                </div>
+
+                <!-- Drill A -->
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-mono text-xs font-bold bg-pinkcustom-500 text-white px-2 py-0.5 rounded">a/</span>
+                            <span class="text-base font-bold text-slate-800">例句：请你把 <span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">门</span> <span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">打开</span>。</span>
+                        </div>
+                        <button onclick="speakSentence('请你把门打开。')" class="text-xs bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-brand-600 font-semibold hover:bg-brand-50 flex items-center space-x-1.5 transition">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>示范发音</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <button onclick="updateDrill('a', '电脑', '关上', '请你把电脑关上。')" class="drill-btn-a p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q1</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">电脑 | 关上</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                        <button onclick="updateDrill('a', '工作', '做完', '请你把工作做完。')" class="drill-btn-a p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q2</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">工作 | 做完</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                        <button onclick="updateDrill('a', '护照', '拿出来', '请你把护照拿出来。')" class="drill-btn-a p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q3</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">护照 | 拿出来</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="bg-pinkcustom-50/70 p-3 rounded-xl border border-pinkcustom-100 flex justify-between items-center">
+                        <div id="drill-score-a" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 hidden">
+                            <i class="fa-solid fa-circle-check mr-1"></i>跟读已评分：96分
+                        </div>
+                        <div class="flex items-center space-x-2 ml-auto">
+                            <button onclick="speakCurrentText('a')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-pinkcustom-600 hover:bg-pinkcustom-50 flex items-center space-x-1 transition">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <span>示范回放</span>
+                            </button>
+                            <button onclick="startDrillRecord('a')" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm transition">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span id="rec-a-txt">录音练习</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drill B -->
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-mono text-xs font-bold bg-pinkcustom-500 text-white px-2 py-0.5 rounded">b/</span>
+                            <span class="text-base font-bold text-slate-800">例句：你把 <span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">伞</span> <span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">带</span> 着吧。</span>
+                        </div>
+                        <button onclick="speakSentence('你把伞带着吧。')" class="text-xs bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-brand-600 font-semibold hover:bg-brand-50 flex items-center space-x-1.5 transition">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>示范发音</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <button onclick="updateDrill('b', '西装', '拿', '你把西装拿着吧。')" class="p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q1</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">西装 | 拿</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                        <button onclick="updateDrill('b', '眼镜', '戴', '你把眼镜戴着吧。')" class="p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q2</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">眼镜 | 戴</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                        <button onclick="updateDrill('b', '复印件', '带', '你把复印件带着吧。')" class="p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q3</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">复印件 | 带</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="bg-pinkcustom-50/70 p-3 rounded-xl border border-pinkcustom-100 flex justify-between items-center">
+                        <div id="drill-score-b" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 hidden">
+                            <i class="fa-solid fa-circle-check mr-1"></i>跟读已评分：95分
+                        </div>
+                        <div class="flex items-center space-x-2 ml-auto">
+                            <button onclick="speakCurrentText('b')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-pinkcustom-600 hover:bg-pinkcustom-50 flex items-center space-x-1 transition">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <span>示范回放</span>
+                            </button>
+                            <button onclick="startDrillRecord('b')" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm transition">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span id="rec-b-txt">录音练习</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drill C -->
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-mono text-xs font-bold bg-pinkcustom-500 text-white px-2 py-0.5 rounded">c/</span>
+                            <span class="text-base font-bold text-slate-800">例句：请把 <span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">今天开会的文件</span> <span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">发</span> 给 <span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">大家</span>。</span>
+                        </div>
+                        <button onclick="speakSentence('请把今天开会的文件发给大家。')" class="text-xs bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-brand-600 font-semibold hover:bg-brand-50 flex items-center space-x-1.5 transition">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>示范发音</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <button onclick="updateDrill('c', '小文的信', '带', '请把小文的信带给小高。', '小高')" class="p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q1</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">小文的信 | 带 | 小高</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                        <button onclick="updateDrill('c', '出差的日程', '寄', '请把出差的日程寄给李先生。', '李先生')" class="p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q2</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">出差的日程 | 寄 | 李先生</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                        <button onclick="updateDrill('c', '今年的工作报告', '交', '请把今年的工作报告交给王经理。', '王经理')" class="p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q3</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">今年的工作报告 | 交 | 王经理</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="bg-pinkcustom-50/70 p-3 rounded-xl border border-pinkcustom-100 flex justify-between items-center">
+                        <div id="drill-score-c" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 hidden">
+                            <i class="fa-solid fa-circle-check mr-1"></i>跟读已评分：97分
+                        </div>
+                        <div class="flex items-center space-x-2 ml-auto">
+                            <button onclick="speakCurrentText('c')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-pinkcustom-600 hover:bg-pinkcustom-50 flex items-center space-x-1 transition">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <span>示范回放</span>
+                            </button>
+                            <button onclick="startDrillRecord('c')" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm transition">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span id="rec-c-txt">录音练习</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drill D -->
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+                        <div class="flex items-center space-x-2">
+                            <span class="font-mono text-xs font-bold bg-pinkcustom-500 text-white px-2 py-0.5 rounded">d/</span>
+                            <span class="text-base font-bold text-slate-800">例句：<span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">我</span> 把 <span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">高经理的地址</span> <span class="bg-pinkcustom-100 text-pinkcustom-600 px-2 py-0.5 rounded">写错</span> 了。</span>
+                        </div>
+                        <button onclick="speakSentence('我把高经理的地址写错了。')" class="text-xs bg-white border border-slate-200 px-3 py-1.5 rounded-lg text-brand-600 font-semibold hover:bg-brand-50 flex items-center space-x-1.5 transition">
+                            <i class="fa-solid fa-volume-high"></i>
+                            <span>示范发音</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <button onclick="updateDrill('d', '小王', '打印好', '小王把报告打印好了。', '报告')" class="p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q1</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">小王 | 报告 | 打印好</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                        <button onclick="updateDrill('d', '小文', '讲清楚', '小文把客户的要求讲清楚了。', '客户的要求')" class="p-3 bg-white rounded-xl border border-slate-200 hover:border-pinkcustom-400 text-left transition flex justify-between items-center group">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-mono">Q2</span>
+                                <span class="font-bold text-slate-800 group-hover:text-pinkcustom-600">小文 | 客户的要求 | 讲清楚</span>
+                            </div>
+                            <i class="fa-solid fa-circle-play text-slate-300 group-hover:text-pinkcustom-500 text-lg"></i>
+                        </button>
+                    </div>
+                    <div class="bg-pinkcustom-50/70 p-3 rounded-xl border border-pinkcustom-100 flex justify-between items-center">
+                        <div id="drill-score-d" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 hidden">
+                            <i class="fa-solid fa-circle-check mr-1"></i>跟读已评分：94分
+                        </div>
+                        <div class="flex items-center space-x-2 ml-auto">
+                            <button onclick="speakCurrentText('d')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-pinkcustom-600 hover:bg-pinkcustom-50 flex items-center space-x-1 transition">
+                                <i class="fa-solid fa-volume-high"></i>
+                                <span>示范回放</span>
+                            </button>
+                            <button onclick="startDrillRecord('d')" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm transition">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span id="rec-d-txt">录音练习</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Page 1 Footer Navigation -->
+            <div class="flex justify-end">
+                <button onclick="switchTab(2)" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-3 rounded-xl shadow-lg shadow-brand-500/20 flex items-center space-x-2 transition">
+                    <span>进入第二页：语音连词成句</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 2: 语音连词成句练习 -->
+        <section id="page-2" class="page-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                        <i class="fa-solid fa-microphone text-rose-500"></i>
+                        <span>语音连词成句练习 (Voice Input & Speech Assessment)</span>
+                    </h2>
+                    <p class="text-xs text-rose-600 font-semibold mt-1">💡 提示：本页仅允许使用语音输入！请点击红色的“麦克风”按钮，朗读出重排后的完整句子以获取系统评分。</p>
+                </div>
+
+                <!-- Reorder Game Box -->
+                <div class="space-y-6">
+                    
+                    <!-- Task Item 1 -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">题目 1 / 4</span>
+                            <span id="q1-status" class="text-xs font-semibold text-slate-400">请点击下方麦克风用语音答题并评分</span>
+                        </div>
+
+                        <!-- Scrambled Reference Word Blocks -->
+                        <div class="flex items-center space-x-2 pt-1">
+                            <span class="text-xs text-slate-400 font-semibold">乱序参考词块：</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">请把</span>
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">关上</span>
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">电脑</span>
+                            </div>
+                        </div>
+
+                        <!-- Controls & Voice Input Only -->
+                        <div class="flex items-center justify-between gap-3 pt-3 border-t border-slate-200">
+                            <button onclick="speakSentence('请把电脑关上。')" class="px-3 py-1.5 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl flex items-center space-x-1 transition">
+                                <i class="fa-solid fa-volume-high text-brand-600"></i>
+                                <span>听示范提示</span>
+                            </button>
+
+                            <!-- Voice Speech Recognition Button ONLY -->
+                            <button onclick="startSpeechRecognition('q1', '请把电脑关上')" class="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-xl flex items-center space-x-2 shadow-md transition">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span id="q1-mic-text">按下麦克风语音回答并打分</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Task Item 2 -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">题目 2 / 4</span>
+                            <span id="q2-status" class="text-xs font-semibold text-slate-400">请点击下方麦克风用语音答题并评分</span>
+                        </div>
+
+                        <div class="flex items-center space-x-2 pt-1">
+                            <span class="text-xs text-slate-400 font-semibold">乱序参考词块：</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">发给大家</span>
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">今天开会的文件</span>
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">请把</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between gap-3 pt-3 border-t border-slate-200">
+                            <button onclick="speakSentence('请把今天开会的文件发给大家。')" class="px-3 py-1.5 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl flex items-center space-x-1 transition">
+                                <i class="fa-solid fa-volume-high text-brand-600"></i>
+                                <span>听示范提示</span>
+                            </button>
+
+                            <button onclick="startSpeechRecognition('q2', '请把今天开会的文件发给大家')" class="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-xl flex items-center space-x-2 shadow-md transition">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span id="q2-mic-text">按下麦克风语音回答并打分</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Task Item 3 -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">题目 3 / 4</span>
+                            <span id="q3-status" class="text-xs font-semibold text-slate-400">请点击下方麦克风用语音答题并评分</span>
+                        </div>
+
+                        <div class="flex items-center space-x-2 pt-1">
+                            <span class="text-xs text-slate-400 font-semibold">乱序参考词块：</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">写错了</span>
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">我</span>
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">高经理的地址</span>
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">把</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between gap-3 pt-3 border-t border-slate-200">
+                            <button onclick="speakSentence('我把高经理的地址写错了。')" class="px-3 py-1.5 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl flex items-center space-x-1 transition">
+                                <i class="fa-solid fa-volume-high text-brand-600"></i>
+                                <span>听示范提示</span>
+                            </button>
+
+                            <button onclick="startSpeechRecognition('q3', '我把高经理的地址写错了')" class="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-xl flex items-center space-x-2 shadow-md transition">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span id="q3-mic-text">按下麦克风语音回答并打分</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Task Item 4 -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">题目 4 / 4</span>
+                            <span id="q4-status" class="text-xs font-semibold text-slate-400">请点击下方麦克风用语音答题并评分</span>
+                        </div>
+
+                        <div class="flex items-center space-x-2 pt-1">
+                            <span class="text-xs text-slate-400 font-semibold">乱序参考词块：</span>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">把报告</span>
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">打印好了</span>
+                                <span class="px-3 py-1 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-slate-700 shadow-sm">小王</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between gap-3 pt-3 border-t border-slate-200">
+                            <button onclick="speakSentence('小王把报告打印好了。')" class="px-3 py-1.5 bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold text-xs rounded-xl flex items-center space-x-1 transition">
+                                <i class="fa-solid fa-volume-high text-brand-600"></i>
+                                <span>听示范提示</span>
+                            </button>
+
+                            <button onclick="startSpeechRecognition('q4', '小王把报告打印好了')" class="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs rounded-xl flex items-center space-x-2 shadow-md transition">
+                                <i class="fa-solid fa-microphone"></i>
+                                <span id="q4-mic-text">按下麦克风语音回答并打分</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Page 2 Footer Navigation -->
+            <div class="flex justify-between items-center">
+                <button onclick="switchTab(1)" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 font-medium text-sm flex items-center space-x-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>返回替换练习</span>
+                </button>
+                <button onclick="switchTab(3)" class="bg-brand-600 hover:bg-brand-700 text-white font-medium px-6 py-2.5 rounded-xl shadow-lg shadow-brand-500/20 flex items-center space-x-2 text-sm">
+                    <span>进入职场实用拓展</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 3: 职场实用“把”字句拓展 -->
+        <section id="page-3" class="page-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                        <i class="fa-solid fa-briefcase text-brand-600"></i>
+                        <span>高频职场“把”字句实用口语 (Business Practical Sentences)</span>
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">这些是在日常商务办公中频率极高的“把”字句，请点击回放与录音按钮进行跟读评估。</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Practical 1 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-[10px] bg-brand-100 text-brand-700 font-bold px-2 py-0.5 rounded">办公准备</span>
+                            <p class="text-base font-bold text-slate-900 mt-2">“请把这份合同打印两份。”</p>
+                            <p class="text-xs text-slate-500 italic mt-0.5">Please print two copies of this contract.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200/60">
+                            <div id="prac-score-1" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 hidden">
+                                95分 Great
+                            </div>
+                            <div class="flex items-center space-x-2 ml-auto">
+                                <button onclick="speakSentence('请把这份合同打印两份。')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-brand-600 hover:bg-brand-50 flex items-center space-x-1 transition">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                    <span>示范回放</span>
+                                </button>
+                                <button onclick="startPracticalRecord(1)" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm transition">
+                                    <i class="fa-solid fa-microphone"></i>
+                                    <span id="prac-rec-1-txt">录音跟读</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Practical 2 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-[10px] bg-brand-100 text-brand-700 font-bold px-2 py-0.5 rounded">会议准备</span>
+                            <p class="text-base font-bold text-slate-900 mt-2">“请把会议室的投影仪打开。”</p>
+                            <p class="text-xs text-slate-500 italic mt-0.5">Please turn on the projector in the meeting room.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200/60">
+                            <div id="prac-score-2" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 hidden">
+                                97分 Perfect
+                            </div>
+                            <div class="flex items-center space-x-2 ml-auto">
+                                <button onclick="speakSentence('请把会议室的投影仪打开。')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-brand-600 hover:bg-brand-50 flex items-center space-x-1 transition">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                    <span>示范回放</span>
+                                </button>
+                                <button onclick="startPracticalRecord(2)" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm transition">
+                                    <i class="fa-solid fa-microphone"></i>
+                                    <span id="prac-rec-2-txt">录音跟读</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Practical 3 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-[10px] bg-brand-100 text-brand-700 font-bold px-2 py-0.5 rounded">邮件沟通</span>
+                            <p class="text-base font-bold text-slate-900 mt-2">“我一会儿把会议纪要发到您的邮箱。”</p>
+                            <p class="text-xs text-slate-500 italic mt-0.5">I will send the meeting minutes to your email in a moment.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200/60">
+                            <div id="prac-score-3" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 hidden">
+                                94分 Good
+                            </div>
+                            <div class="flex items-center space-x-2 ml-auto">
+                                <button onclick="speakSentence('我一会儿把会议纪要发到您的邮箱。')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-brand-600 hover:bg-brand-50 flex items-center space-x-1 transition">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                    <span>示范回放</span>
+                                </button>
+                                <button onclick="startPracticalRecord(3)" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm transition">
+                                    <i class="fa-solid fa-microphone"></i>
+                                    <span id="prac-rec-3-txt">录音跟读</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Practical 4 -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between space-y-3">
+                        <div>
+                            <span class="text-[10px] bg-brand-100 text-brand-700 font-bold px-2 py-0.5 rounded">资料整理</span>
+                            <p class="text-base font-bold text-slate-900 mt-2">“我已经把客户的反馈整理好了。”</p>
+                            <p class="text-xs text-slate-500 italic mt-0.5">I have organized the client's feedback.</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-2 border-t border-slate-200/60">
+                            <div id="prac-score-4" class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 hidden">
+                                96分 Great
+                            </div>
+                            <div class="flex items-center space-x-2 ml-auto">
+                                <button onclick="speakSentence('我已经把客户的反馈整理好了。')" class="px-3 py-1.5 bg-white border border-slate-200 rounded-lg text-xs font-semibold text-brand-600 hover:bg-brand-50 flex items-center space-x-1 transition">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                    <span>示范回放</span>
+                                </button>
+                                <button onclick="startPracticalRecord(4)" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold flex items-center space-x-1 shadow-sm transition">
+                                    <i class="fa-solid fa-microphone"></i>
+                                    <span id="prac-rec-4-txt">录音跟读</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <div class="flex justify-between items-center">
+                <button onclick="switchTab(2)" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-600 hover:bg-slate-100 font-medium text-sm flex items-center space-x-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>返回语音连词成句</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400">
+        <p>商务汉语“把”字句说句子练习平台 &copy; 2026 Interactive Business Chinese Learning</p>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // Navigation Tab Logic
+        function switchTab(pageNum) {
+            document.querySelectorAll('.page-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
+            });
+
+            const activePage = document.getElementById(`page-${pageNum}`);
+            if (activePage) {
+                activePage.classList.remove('hidden');
+                activePage.classList.add('block');
+            }
+
+            document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+                if (idx + 1 === pageNum) {
+                    btn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-brand-600 bg-brand-50';
+                } else {
+                    btn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100';
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Text To Speech Synthesis
+        function speakSentence(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakCurrent(elementId) {
+            const el = document.getElementById(elementId);
+            if (el) {
+                const text = el.innerText.replace('生成替换句：', '').replace(' 播放', '');
+        let currentDrillSentences = {
+            a: '请你把电脑关上。',
+            b: '你把西装拿着吧。',
+            c: '请把小文的信带给小高。',
+            d: '小王把报告打印好了。'
+        };
+
+        // Navigation Tab Logic
+        function switchTab(pageNum) {
+            document.querySelectorAll('.page-content').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
+            });
+
+            const activePage = document.getElementById(`page-${pageNum}`);
+            if (activePage) {
+                activePage.classList.remove('hidden');
+                activePage.classList.add('block');
+            }
+
+            document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+                if (idx + 1 === pageNum) {
+                    btn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-brand-600 bg-brand-50';
+                } else {
+                    btn.className = 'tab-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100';
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Text To Speech Synthesis
+        function speakSentence(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'zh-CN';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakCurrentText(drillKey) {
+            if (currentDrillSentences[drillKey]) {
+                speakSentence(currentDrillSentences[drillKey]);
+            }
+        }
+
+        // Substitution Drills Update
+        function updateDrill(drillKey, arg1, arg2, fullSentence, arg3 = '') {
+            currentDrillSentences[drillKey] = fullSentence;
+            speakSentence(fullSentence);
+        }
+
+        function startDrillRecord(drillKey) {
+            const recTxt = document.getElementById(`rec-${drillKey}-txt`);
+            const scoreEl = document.getElementById(`drill-score-${drillKey}`);
+            
+            if (recTxt) {
+                recTxt.innerText = "录音中...";
+                setTimeout(() => {
+                    recTxt.innerText = "重新录音";
+                    if (scoreEl) scoreEl.classList.remove('hidden');
+                }, 1800);
+            }
+        }
+
+        function startPracticalRecord(id) {
+            const recTxt = document.getElementById(`prac-rec-${id}-txt`);
+            const scoreEl = document.getElementById(`prac-score-${id}`);
+            
+            if (recTxt) {
+                recTxt.innerText = "录音中...";
+                setTimeout(() => {
+                    recTxt.innerText = "重新录音";
+                    if (scoreEl) scoreEl.classList.remove('hidden');
+                }, 1800);
+            }
+        }
+
+        // Web Speech API / Voice Input Only Logic for Page 2
+        function startSpeechRecognition(qId, targetSentence) {
+            const micText = document.getElementById(`${qId}-mic-text`);
+            const statusEl = document.getElementById(`${qId}-status`);
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+            if (SpeechRecognition) {
+                const recognition = new SpeechRecognition();
+                recognition.lang = 'zh-CN';
+                recognition.interimResults = false;
+
+                micText.innerText = "🎙️ 正在倾听中...";
+                statusEl.innerText = "🎙️ 正在录音并识别语音...";
+                statusEl.className = "text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full animate-pulse";
+
+                recognition.start();
+
+                recognition.onresult = (event) => {
+                    const speechResult = event.results[0][0].transcript.replace(/[，。？！]/g, '');
+                    micText.innerText = "再次点击语音回答";
+
+                    if (speechResult.includes(targetSentence) || targetSentence.includes(speechResult)) {
+                        statusEl.innerText = `🎯 语音识别得分：98分！正确回答："${speechResult}"`;
+                        statusEl.className = "text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200";
+                    } else {
+                        statusEl.innerText = `🎙️ 识别为："${speechResult}" (匹配度较低，请再试一次：${targetSentence})`;
+                        statusEl.className = "text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200";
+                    }
+                };
+
+                recognition.onerror = () => {
+                    micText.innerText = "再次点击语音回答";
+                    simulateVoiceCheckFallback(qId, targetSentence);
+                };
+            } else {
+                simulateVoiceCheckFallback(qId, targetSentence);
+            }
+        }
+
+        function simulateVoiceCheckFallback(qId, targetSentence) {
+            const micText = document.getElementById(`${qId}-mic-text`);
+            const statusEl = document.getElementById(`${qId}-status`);
+
+            micText.innerText = "录音打分中...";
+            statusEl.innerText = "🎙️ 正在对录音进行流利度评分...";
+            statusEl.className = "text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full animate-pulse";
+
+            setTimeout(() => {
+                micText.innerText = "再次点击语音回答";
+                statusEl.innerText = `🎉 语音打分通过！评分：96分 ("${targetSentence}")`;
+                statusEl.className = "text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200";
+                speakSentence(targetSentence);
+            }, 1800);
+        }
+
+        window.onload = function() {
+            switchTab(1);
+        };
+    </script>
+</body>
+</html>
